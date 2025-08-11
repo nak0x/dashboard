@@ -1,18 +1,18 @@
 :root {
   /* --- Colors --- */
-  --darker: #0E1114;
-  --dark: #171B1E;
-  --grey: #272D31;
-  --lightgrey: #5F6971;
-  --yellow: #E8BF37;
-  --blue: #02D7E4;
-  --purple: #8C69FB;
-  --pink: #BF18A2;
-  --white: #E2D3ED;
+  --darker: #0e1114;
+  --dark: #171b1e;
+  --grey: #272d31;
+  --lightgrey: #5f6971;
+  --yellow: #e8bf37;
+  --blue: #02d7e4;
+  --purple: #8c69fb;
+  --pink: #bf18a2;
+  --white: #e2d3ed;
 
   /* --- Fonts --- */
-  --fancy-font: 'Hedvig Letters Serif', 'Times New Roman', serif;
-  --mono-font: 'GoMono Nerd Font', "Courier New", Courier, monospace;
+  --fancy-font: "Hedvig Letters Serif", "Times New Roman", serif;
+  --mono-font: "GoMono Nerd Font", "Courier New", Courier, monospace;
 
   /* --- UI --- */
   --radius: 6px;

@@ -1,57 +1,69 @@
-<script setup>
-import { useWorkspaceStore } from '@/stores/workspaces'
-import { ref, getCurrentInstance } from 'vue'
+<script setup lang="ts">
+import { useWorkspaceStore } from "@/stores/workspaces";
+import { ref, getCurrentInstance } from "vue";
 
-import Tag from './Tag.vue'
+import Tag from "./Tag.vue";
 
-const { proxy } = getCurrentInstance()
+const instance = getCurrentInstance();
+if (!instance) throw Error("No instance to fetch from");
+const proxy = instance.proxy;
 
 /* --- Stores --- */
-const workspaces = useWorkspaceStore()
+const workspaces = useWorkspaceStore();
 
 /* --- Methodes --- */
 const getClock = () => {
   const date = new Date();
-  let hours = date.getHours();
-  hours = hours > 9 ? `${hours}` : `0${hours}`
-  let min = date.getMinutes();
-  min = min > 9 ? `${min}` : `0${min}`
-  return `${hours}:${min}`
-}
+  // Using <n> prefix to identify int from string
+  const nhours: number = date.getHours();
+  const hours: string = nhours > 9 ? `${nhours}` : `0${nhours}`;
+  const nmin: number = date.getMinutes();
+  const min: string = nmin > 9 ? `${nmin}` : `0${nmin}`;
+  return `${hours}:${min}`;
+};
 
+interface temperature {
+  current: { temperature_2m: number };
+  current_units: { temperature_2m: string };
+}
 const getTemperature = async () => {
-  const result = await proxy.$utils.fetchUrl("https://api.open-meteo.com/v1/forecast?latitude=45.9088&longitude=6.1257&current=temperature_2m&forecast_days=1");
-  return `${result.current.temperature_2m}${result.current_units.temperature_2m}`;
-}
+  const result: temperature = (await proxy?.$utils.fetchUrl(
+    "https://api.open-meteo.com/v1/forecast?latitude=45.9088&longitude=6.1257&current=temperature_2m&forecast_days=1",
+  )) as temperature;
+  return `${result?.current.temperature_2m}${result?.current_units.temperature_2m}`;
+};
 
-const getIpAddr = async () => {
-  const result = await proxy.$utils.fetchUrl("https://api.ipify.org/?format=json")
-  return `${result.ip}`;
+interface ip {
+  ip: string;
 }
+const getIpAddr = async () => {
+  const result: ip = (await proxy?.$utils.fetchUrl(
+    "https://api.ipify.org/?format=json",
+  )) as ip;
+  return `${result?.ip}`;
+};
 
 /* --- Refs --- */
 const clock = ref(getClock());
-const temp = ref('');
-const ipaddr = ref('');
+const temp = ref("");
+const ipaddr = ref("");
 
 getTemperature().then((tempData) => {
   temp.value = tempData;
-})
+});
 
 getIpAddr().then((ip) => {
   ipaddr.value = ip;
-})
+});
 
 /* 15fps clock*/
 setInterval(() => {
   clock.value = getClock();
-}, 64)
-
+}, 64);
 </script>
 
 <template>
   <nav class="header">
-
     <div class="current-tab">
       <div class="indicators">
         <span
@@ -62,7 +74,7 @@ setInterval(() => {
         ></span>
       </div>
       <div class="tab-name">
-        {{ workspaces.current.title ?? "No workspace name" }}
+        {{ workspaces.current?.title ?? "No workspace name" }}
       </div>
     </div>
 
@@ -72,7 +84,6 @@ setInterval(() => {
       <Tag :text="clock"></Tag>
       <Tag text="" icon="fa-gear"></Tag>
     </div>
-
   </nav>
 </template>
 
@@ -99,7 +110,7 @@ setInterval(() => {
 }
 .indicator {
   --inner: var(--grey);
-  --outer : transparent;
+  --outer: transparent;
   display: block;
   position: relative;
   aspect-ratio: 1;
@@ -110,7 +121,7 @@ setInterval(() => {
   cursor: pointer;
 }
 .indicator:before {
-  content: '';
+  content: "";
   z-index: -1;
   display: block;
   height: 32px;

@@ -1,15 +1,17 @@
-<script setup>
-import SearchBar from './SearchBar.vue'
+<script setup lang="ts">
+import SearchBar from "./SearchBar.vue";
 
 const getVersionNumber = () => {
-  var birthdate = new Date("2004/3/9");
-  var cur = new Date();
-  var diff = cur-birthdate;
-  var a = Math.floor(diff/31557600000);
-  return a > 100 ? a.toString().split('').join('.') : '0.'.concat(a.toString().split('').join('.'))
-}
+  const birthdate = new Date("2004/3/9").valueOf();
+  const cur = Date.now();
+  const diff = cur - birthdate;
+  const a = Math.floor(diff / 31557600000);
+  return a > 100
+    ? a.toString().split("").join(".")
+    : "0.".concat(a.toString().split("").join("."));
+};
 
-const VERSION = `v${getVersionNumber()}`
+const VERSION = `v${getVersionNumber()}`;
 </script>
 <template>
   <div class="search-container">

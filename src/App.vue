@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
-import Workspace from './components/Workspace.vue'
+import Header from "./components/Header.vue";
+import Workspace from "./components/Workspace.vue";
 </script>
 
 <template>
-  <img class="wallpaper" src="./assets/imgs/austin-schmid-KcG7nqrUmN8-unsplash.jpg" />
+  <img
+    class="wallpaper"
+    src="./assets/imgs/austin-schmid-KcG7nqrUmN8-unsplash.jpg"
+  />
   <Header></Header>
-  <Workspace></Workspace> 
+  <Workspace></Workspace>
 </template>
 
 <style scoped>

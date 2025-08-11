@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useSearchEngineStore } from '@/stores/searchEngine'
+import { ref } from "vue";
+import { useSearchEngineStore } from "@/stores/searchEngine";
 
-const store = useSearchEngineStore()
-const query = ref('')
+const store = useSearchEngineStore();
+const query = ref("");
 
 function onSearch() {
-  if(!query.value) return;
+  if (!query.value) return;
 
-  const suffix = query.value.split(' ')[0]
-  const engine = store.getEngineBySuffix(suffix)
-  if (!engine) return
-  const url = store.buildUrl(engine.id, query.value)
-  console.log(url)
+  const suffix = query.value.split(" ")[0];
+  const engine = store.getEngineBySuffix(suffix);
+  if (!engine) return;
+  const url = store.buildUrl(engine.id, query.value);
+  console.log(url);
   window.location.href = url;
 }
 </script>
@@ -24,7 +24,7 @@ function onSearch() {
       <input
         type="text"
         :value="query"
-        @input="e => query = e.target.value"
+        @input="(e: any) => (query = e.target.value)"
       />
     </fieldset>
   </form>
