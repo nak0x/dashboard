@@ -1,0 +1,52 @@
+:root {
+  /* --- Colors --- */
+  --darker: #0e1114;
+  --dark: #171b1e;
+  --grey: #272d31;
+  --lightgrey: #5f6971;
+  --yellow: #e8bf37;
+  --blue: #02d7e4;
+  --purple: #8c69fb;
+  --pink: #bf18a2;
+  --white: #e2d3ed;
+
+  /* --- Fonts --- */
+  --fancy-font: "Hedvig Letters Serif", "Times New Roman", serif;
+  --mono-font: "GoMono Nerd Font", "Courier New", Courier, monospace;
+
+  /* --- UI --- */
+  --radius: 6px;
+}
+* {
+  box-sizing: border-box;
+  font-family: var(--mono-font);
+}
+
+html {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+body {
+  padding: 0px;
+  margin: 0;
+  height: 100dvh;
+  width: 100vw;
+}
+
+#app {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  color: var(--yellow);
+  font-family: var(--fancy-font);
+}
+
+.subtitle {
+  color: var(--lightgrey);
+}
