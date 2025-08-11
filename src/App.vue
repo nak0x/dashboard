@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Header from "./components/Header.vue";
-import Workspace from "./components/Workspace.vue";
+import Header from "@/components/AppHeader.vue";
+import Workspace from "@/components/WorkspaceContainer.vue";
 </script>
 
 <template>
@@ -8,8 +8,8 @@ import Workspace from "./components/Workspace.vue";
     class="wallpaper"
     src="./assets/imgs/austin-schmid-KcG7nqrUmN8-unsplash.jpg"
   />
-  <Header></Header>
-  <Workspace></Workspace>
+  <AppHeader></AppHeader>
+  <WorkspaceContainer></WorkspaceContainer>
 </template>
 
 <style scoped>

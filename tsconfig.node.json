@@ -6,6 +6,8 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationDir": "dist/node-types",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
 
     "module": "ESNext",
     "moduleResolution": "bundler",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchBar from "./SearchBar.vue";
+import SearchBar from "@/components/Sections/SearchBar.vue";
 
 const getVersionNumber = () => {
   const birthdate = new Date("2004/3/9").valueOf();

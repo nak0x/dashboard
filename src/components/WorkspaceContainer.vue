@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useWorkspaceStore } from "@/stores/workspaces";
-import SectionSearch from "./Sections/SectionSearch.vue";
-import SectionDashboard from "./Sections/SectionDashboard.vue";
-import SectionProfile from "./Sections/SectionProfile.vue";
+import SectionSearch from "@/components/Sections/SectionSearch.vue";
+import SectionDashboard from "@/components/Sections/SectionDashboard.vue";
+import SectionProfile from "@/components/Sections/SectionProfile.vue";
 
 /* --- Stores --- */
 const workspaces = useWorkspaceStore();
